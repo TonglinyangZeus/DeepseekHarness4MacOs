@@ -1,0 +1,33 @@
+name: Release
+
+# Push a tag like `v1.0.0` to build and publish the macOS app:
+#   git tag v1.0.0 && git push origin v1.0.0
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: build .app (macOS arm64)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build:icon
+      - name: Assemble + ad-hoc sign
+        run: npm run package
+      - name: Archive
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent "DeepSeek Harness.app" "DeepSeek-Harness-macOS-arm64.zip"
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: DeepSeek-Harness-macOS-arm64.zip
+          generate_release_notes: true

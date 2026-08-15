@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: syntax + icon pipeline (macOS)
+    runs-on: macos-latest
+    env:
+      # these checks do not need the Electron binary — keep CI fast
+      ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Syntax check
+        run: node --check main.js && node --check build-icon.js
+      - name: Icon pipeline (favicon.svg → AppIcon.png/.icns)
+        run: npm run build:icon
