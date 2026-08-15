@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# built app
+*.app
+
+# generated icons (rebuild with: npm run build:icon)
+icon/AppIcon.png
+icon/AppIcon.icns
+
+# macOS
+.DS_Store
+
+# logs
+*.log

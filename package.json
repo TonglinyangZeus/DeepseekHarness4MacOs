@@ -1,0 +1,20 @@
+{
+  "name": "dsh-harness-app",
+  "productName": "DeepSeek Harness",
+  "version": "1.0.0",
+  "description": "Native macOS shell for the DeepSeek Harness: double-click to boot the dsh web server and open the GUI in a single optimized window.",
+  "main": "main.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build:icon": "node build-icon.js",
+    "package": "bash scripts/package.sh"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "electron": "^43.4.0"
+  }
+}
