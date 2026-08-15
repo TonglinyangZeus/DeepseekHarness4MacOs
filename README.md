@@ -1,12 +1,10 @@
 <div align="center">
 
-<img src="assets/mascot.svg" width="170" alt="DeepSeek 娘 mascot" />
+<img src="icon/favicon.svg" width="72" alt="DeepSeek Harness logo" />
 
 # DeepSeek Harness for macOS
 
 **DeepSeek Harness 的 macOS 原生桌面壳** · Native macOS app shell for the DeepSeek Harness
-
-> 🐋 **DeepSeek 娘** 陪你看守 Harness —— 双击启动，其余交给她。
 
 双击启动 → 自动拉起 `dsh web` 服务 → 在单个优化过的原生窗口中打开 GUI，退出自动清理。
 Double-click to boot the dsh web server and open the GUI in one optimized window.
